@@ -1,0 +1,3 @@
+{% load i18n%}<p>{% blocktrans with code=code expiration_time=expiration_time %}Hello,<br/>
+You have requested email verification. Your verification code is: <strong>{{code}}</strong><br/>
+Please note, that the code is only valid before: <strong>{{ expiration_time }}</strong>{% endblocktrans %}</p>

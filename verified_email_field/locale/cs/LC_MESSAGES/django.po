@@ -1,0 +1,76 @@
+# Czech translation of django-verified-email-field.
+# Copyright (C) 2017, Jakub Dorňák
+# This file is distributed under the same license as the django-verified-email-field package.
+# Jakub Dorňák <jakub.dornak@misli.cz>, 2017.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: 1.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-02-15 00:19+0100\n"
+"Last-Translator: Jakub Dorňák <jakub.dornak@misli.cz>\n"
+"Language: cs\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+
+#: forms.py:19
+msgid "Enter a valid verification code."
+msgstr "Vyplňte platný ověřovací kód."
+
+#: forms.py:31
+msgid "e-mail"
+msgstr "e-mail"
+
+#: forms.py:31
+msgid "send verification code"
+msgstr "odeslat ověřovací kód"
+
+#: forms.py:31
+msgid "verification code"
+msgstr "ověřovací kód"
+
+#: forms.py:53
+msgid "The verification code has been sent to your email."
+msgstr "Ověřovací kód byl odeslán na Váš e-mail"
+
+#: forms.py:56
+msgid "Enter verification code."
+msgstr "Vložte ověřovací kód"
+
+#: forms.py:58
+msgid "The verification code doesn't match."
+msgstr "Ověřovací kód nesouhlasí"
+
+#: settings.py:10
+msgid "Verification code"
+msgstr "Ověřovací kód"
+
+#: templates/verified_email_field/mail.html:1
+#, python-format
+msgid ""
+"Hello,<br/>\n"
+"You have requested email verification. Your verification code is: <strong>"
+"%(code)s</strong><br/>\n"
+"Please note, that the code is only valid before: <strong>"
+"%(expiration_time)s</strong>"
+msgstr ""
+"Dobrý den,<br/>\n"
+"Vyžádal(a) jste si ověření e-mailové adresy. Váš ověřovací kód je: <strong>"
+"%(code)s</strong><br/>\n"
+"Tento kód je platný do: <strong>%(expiration_time)s</strong>"
+
+#: templates/verified_email_field/mail.txt:1
+#, python-format
+msgid ""
+"Hello,\n"
+"\n"
+"You have requested email verification. Your verification code is: %(code)s\n"
+"Please note, that the code is only valid before: %(expiration_time)s"
+msgstr ""
+"Dobrý den,,\n"
+"\n"
+"Vyžádal(a) jste si ověření e-mailové adresy. Váš ověřovací kód je: %(code)s\n"
+"Tento kód je platný do: %(expiration_time)s"
