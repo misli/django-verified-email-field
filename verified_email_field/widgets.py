@@ -32,8 +32,8 @@ class VerifiedEmailWidget(MultiWidget):
 
     def format_output(self, rendered_widgets):
         return ''.join((
-            '<div class="input-group">',
             rendered_widgets[0],
+            '<div class="input-group">',
             '<span class="input-group-btn">',
             format_html(
                 '<button class="btn btn-default" type="button" '
@@ -43,6 +43,6 @@ class VerifiedEmailWidget(MultiWidget):
                 self.send_label,
             ),
             '</span>',
-            '</div>',
             rendered_widgets[1],
+            '</div>',
         ))
