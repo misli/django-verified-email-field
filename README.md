@@ -19,9 +19,11 @@ pip install django-verified-email-field
  1. add  `'verified_email_field'` to Your `settings.INSTALLED_APPS`
  1. include `verified_email_field.urls` in your project's urls.py using namespace `'verified-email-field'`:
 ```python
+from django.conf.urls import url, include
+
 urlpatterns = [
     ...
-    url(r'^verified-email-field/', (verified_email_field.urls, 'verified-email-field', 'verified-email-field')),
+    url(r'^verified-email-field/', include('verified_email_field.urls')),
     ...
 ]
 ```
