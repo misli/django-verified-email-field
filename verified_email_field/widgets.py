@@ -20,7 +20,7 @@ class VerifiedEmailWidget(MultiWidget):
 
     def decompress(self, value):
         if value:
-            raise Exception(value)
+            return [value, None]
         return [None, None]
 
     def render(self, name, value, attrs=None):
