@@ -29,7 +29,16 @@ class VerifiedEmailWidget(MultiWidget):
             attrs = {}
         attrs['class'] = attrs['class'] + ' form-control' if 'class' in attrs else 'form-control'
         return super(VerifiedEmailWidget, self).render(name, value, attrs)
+    
+    def get_context(self, name, value, attrs):
+        context = super(VerifiedEmailWidget, self).get_context(name, value, attrs)
+        context['name'] = self.name
+        context['fieldsetup_id'] = self.fieldsetup_id
+        context['send_label'] = self.send_label
+        return context
 
+    # format_output is removed in Django 1.11
+    # It is only retained here for Django 1.8 compatibility
     def format_output(self, rendered_widgets):
         return ''.join((
             rendered_widgets[0],

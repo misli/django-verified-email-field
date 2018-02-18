@@ -1,0 +1,12 @@
+{% url 'verified-email-field:send' fieldsetup_id as send_url %} 
+<div class="input-group">
+{% for subwidget in widget.subwidgets %}
+    {% include subwidget.template_name with widget=subwidget %}
+{% endfor %}
+    <span class="input-group-btn">
+        <button class="btn btn-default" type="button" 
+            onclick="send_verification_code('{{name}}', '{{send_url}}')">
+            {{send_label}}
+        </button>
+    </span>
+</div>
