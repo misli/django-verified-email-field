@@ -9,6 +9,7 @@ from .fieldsetup import VerifiedEmailFieldSetup, fieldsetups
 from .utils import get_code, send_code
 from .widgets import VerifiedEmailWidget
 
+import sys
 
 class SendForm(forms.Form):
     email = EmailField()
@@ -30,7 +31,7 @@ class VerifiedEmailField(MultiValueField):
     def __init__(self, required=True, fieldsetup_id=None, max_length=None,
                  email_label=_('e-mail'), send_label=_('send verification code'), code_label=_('verification code'),
                  **kwargs):
-        self.fieldsetup_id = fieldsetup_id or str(hash(self))
+        self.fieldsetup_id = fieldsetup_id or str(hash(self) + sys.maxsize + 1)
         self.fieldsetup = fieldsetups.setdefault(self.fieldsetup_id, VerifiedEmailFieldSetup(**kwargs))
         self.widget = VerifiedEmailWidget(
             send_label=send_label,
