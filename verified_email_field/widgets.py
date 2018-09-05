@@ -8,6 +8,8 @@ from django.utils.html import format_html
 
 
 class VerifiedEmailWidget(MultiWidget):
+    template_name = 'verified_email_field/field.html'
+
     def __init__(self, send_label, fieldsetup_id, email_attrs, code_attrs):
         self.send_label = send_label
         self.fieldsetup_id = fieldsetup_id
