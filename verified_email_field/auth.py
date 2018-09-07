@@ -7,7 +7,6 @@ from django.utils.translation import ugettext_lazy as _
 
 from .forms import VerifiedEmailField
 
-
 __all__ = ['EmailAuthenticationForm', 'VerifiedEmailBackend']
 
 
@@ -62,5 +61,5 @@ class VerifiedEmailBackend(ModelBackend):
                     UserModel.objects.filter(email=verified_email, is_active=True).last() or
                     UserModel.objects.create_user(username=verified_email, email=verified_email)
                 )
-            except:
+            except Exception:
                 pass

@@ -1,12 +1,14 @@
-{% url 'verified-email-field:send' fieldsetup_id as send_url %} 
-<div class="input-group">
 {% for subwidget in widget.subwidgets %}
-    {% include subwidget.template_name with widget=subwidget %}
-{% endfor %}
-    <span class="input-group-btn">
+    {% if forloop.first %}
+        {% include subwidget.template_name with widget=subwidget %}
         <button class="btn btn-default" type="button" 
-            onclick="send_verification_code('{{name}}', '{{send_url}}')">
-            {{send_label}}
+            onclick="send_verification_code('{{ subwidget.attrs.id }}', '{{ send_url|escapejs }}', '{{ sent_message|escapejs }}')">
+            {{ send_label }}
         </button>
-    </span>
-</div>
+    {% else %}
+        <div class="input-group">
+            <span class="input-group-addon">{{ code_label }}:</span>
+            {% include subwidget.template_name with widget=subwidget %}
+        </div>
+    {% endif %}
+{% endfor %}

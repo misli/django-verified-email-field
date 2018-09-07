@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.3.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-02-15 00:19+0100\n"
+"POT-Creation-Date: 2018-09-07 23:40+0200\n"
 "Last-Translator: Jakub Dorňák <jakub.dornak@misli.cz>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
@@ -16,7 +16,16 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
 
-#: forms.py:19
+#: auth.py:17
+msgid "E-mail"
+msgstr "E-mail"
+
+#: auth.py:20
+msgid "User with given e-mail couldn't neither be found nor created."
+msgstr ""
+"Uživatel s tímto e-mailem nebyl ani nalezen, ani nebylo možno jej vytvořit."
+
+#: forms.py:20
 msgid "Enter a valid verification code."
 msgstr "Vyplňte platný ověřovací kód."
 
@@ -24,25 +33,33 @@ msgstr "Vyplňte platný ověřovací kód."
 msgid "e-mail"
 msgstr "e-mail"
 
-#: forms.py:31
-msgid "send verification code"
-msgstr "odeslat ověřovací kód"
+#: forms.py:32
+msgid "send verification code to given e-mail address"
+msgstr "odeslat ověřovací kód na zadanou e-mailovou adresu"
 
-#: forms.py:31
+#: forms.py:34
+msgid ""
+"The verification code has been sent to you e-mail address. You wil receive "
+"it within several minutes. Please, also check your SPAM folder."
+msgstr ""
+"Ověřovací kód byl odeslán na Vaši e-mailovou adresu. Obdržíte ho během "
+"několika minut. Prosíme, zkontrolujte také složku SPAM."
+
+#: forms.py:37
 msgid "verification code"
 msgstr "ověřovací kód"
 
-#: forms.py:53
+#: forms.py:63
 msgid "The verification code has been sent to your email."
 msgstr "Ověřovací kód byl odeslán na Váš e-mail"
 
-#: forms.py:56
+#: forms.py:66
 msgid "Enter verification code."
-msgstr "Vložte ověřovací kód"
+msgstr "Vložte ověřovací kód."
 
-#: forms.py:58
+#: forms.py:68
 msgid "The verification code doesn't match."
-msgstr "Ověřovací kód nesouhlasí"
+msgstr "Ověřovací kód nesouhlasí."
 
 #: settings.py:10
 msgid "Verification code"
@@ -58,7 +75,7 @@ msgid ""
 "%(expiration_time)s</strong>"
 msgstr ""
 "Dobrý den,<br/>\n"
-"Vyžádal(a) jste si ověření e-mailové adresy. Váš ověřovací kód je: <strong>"
+"vyžádal(a) jste si ověření e-mailové adresy. Váš ověřovací kód je: <strong>"
 "%(code)s</strong><br/>\n"
 "Tento kód je platný do: <strong>%(expiration_time)s</strong>"
 
@@ -72,5 +89,5 @@ msgid ""
 msgstr ""
 "Dobrý den,,\n"
 "\n"
-"Vyžádal(a) jste si ověření e-mailové adresy. Váš ověřovací kód je: %(code)s\n"
+"vyžádal(a) jste si ověření e-mailové adresy. Váš ověřovací kód je: %(code)s\n"
 "Tento kód je platný do: %(expiration_time)s"

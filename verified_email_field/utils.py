@@ -12,7 +12,7 @@ from django.utils.timezone import now
 def get_code(email, fieldsetup):
     try:
         expiration_time, code = cache.get(fieldsetup.cache_prefix + email)
-    except:
+    except Exception:
         return None
     return code if expiration_time >= now() else None
 

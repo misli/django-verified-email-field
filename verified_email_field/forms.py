@@ -2,6 +2,7 @@ from __future__ import unicode_literals
 
 from django import forms
 from django.core.exceptions import ValidationError
+from django.core.urlresolvers import reverse_lazy
 from django.forms.fields import CharField, EmailField, MultiValueField
 from django.utils.translation import ugettext_lazy as _
 
@@ -21,26 +22,35 @@ class VerificationCodeField(CharField):
 
     def __init__(self, length, **kwargs):
         kwargs['max_length'] = kwargs['min_length'] = length
-        kwargs['required'] = False
         super(VerificationCodeField, self).__init__(**kwargs)
 
 
 class VerifiedEmailField(MultiValueField):
 
-    def __init__(self, required=True, fieldsetup_id=None, max_length=None,
-                 email_label=_('e-mail'), send_label=_('send verification code'), code_label=_('verification code'),
+    def __init__(self, required=True, widget=None, max_length=None, fieldsetup_id=None,
+                 email_attrs=None, code_attrs=None, email_label=_('e-mail'),
+                 send_label=_('send verification code to given e-mail address'),
+                 sent_message=_(
+                    'The verification code has been sent to you e-mail address. '
+                    'You wil receive it within several minutes. Please, also check your SPAM folder.'
+                 ),
+                 code_label=_('verification code'),
                  **kwargs):
         self.fieldsetup_id = fieldsetup_id or str(hash(self))
         self.fieldsetup = fieldsetups.setdefault(self.fieldsetup_id, VerifiedEmailFieldSetup(**kwargs))
-        self.widget = VerifiedEmailWidget(
+        self.widget = widget or VerifiedEmailWidget(
+            email_attrs=email_attrs,
+            code_attrs=code_attrs,
+            email_label=email_label,
             send_label=send_label,
+            send_url=reverse_lazy('verified-email-field:send', args=(self.fieldsetup_id,)),
+            sent_message=sent_message,
+            code_label=code_label,
             fieldsetup_id=self.fieldsetup_id,
-            email_attrs={'placeholder': email_label},
-            code_attrs={'placeholder': code_label},
         )
         super(VerifiedEmailField, self).__init__((
             EmailField(label=email_label, required=required),
-            VerificationCodeField(label=code_label, length=self.fieldsetup.code_length),
+            VerificationCodeField(label=code_label, required=False, length=self.fieldsetup.code_length),
         ), require_all_fields=False, **kwargs)
 
     def clean(self, value):

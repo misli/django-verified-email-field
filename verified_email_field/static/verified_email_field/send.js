@@ -15,16 +15,17 @@ function getCookie(name) {
 }
 
 
-function send_verification_code(name, url) {
+function send_verification_code(id, url, message=null) {
     $.ajax({
         type: "POST",
         url: url,
         data: {
             csrfmiddlewaretoken: getCookie('csrftoken'),
-            email: document.getElementById('id_' + name + '_0').value,
+            email: document.getElementById(id).value,
         },
         success: function(msg) {
-            document.getElementById('id_' + name + '_1').focus();
-        }
+            if (message) alert(message);
+            document.getElementById(id.replace('_0', '_1')).focus();
+        },
     });
 }
