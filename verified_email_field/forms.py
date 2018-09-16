@@ -36,7 +36,7 @@ class VerifiedEmailField(MultiValueField):
                  ),
                  code_label=_('verification code'),
                  **kwargs):
-        self.fieldsetup_id = fieldsetup_id or str(hash(self))
+        self.fieldsetup_id = fieldsetup_id or str(abs(hash(self)))
         self.fieldsetup = fieldsetups.setdefault(self.fieldsetup_id, VerifiedEmailFieldSetup(**kwargs))
         self.widget = widget or VerifiedEmailWidget(
             email_attrs=email_attrs,
