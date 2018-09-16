@@ -15,7 +15,7 @@ function getCookie(name) {
 }
 
 
-function send_verification_code(id, url, message=null) {
+function send_verification_code(id, url, message) {
     $.ajax({
         type: "POST",
         url: url,
