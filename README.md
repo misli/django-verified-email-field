@@ -36,7 +36,7 @@ from django import forms
 from verified_email_field.forms import VerifiedEmailField
 
 class RegistrationForm(forms.ModelForm):
-    email = VerifiedEmailField(label='email', required=True)
+    email = VerifiedEmailField(label='email', fieldsetup_id='registration-form-email', required=True)
 ```
 
 Or in Your models:
@@ -45,13 +45,7 @@ from django.db import models
 from verified_email_field.models import VerifiedEmailField
 
 class User(models.Model):
-    email = VerifiedEmailField('e-mail')
+    email = VerifiedEmailField('e-mail', fieldsetup_id='user-email')
 ```
 
-Ensure that `form.media.js` is being rendered in your template:
-```html
-{# render form.media.js using sekizai #}
-{% addtoblock "js" %}
-{{ form.media.js }}
-{% endaddtoblock %}
-```
+Ensure that `form.media.js` (`{{ form.media.js }}`) is being rendered in your template.
