@@ -4,6 +4,7 @@ Simple model and form field to get verified email
 Renders two input fields: `e-mail` and `verification code`.
 The verification code is send to the e-mail address using AJAX or during field's `clean`,
 if there is no valid code for given e-mail, so it works even without javascript.
+For the javascript to work properly You need to have [jQuery](https://code.jquery.com/) included in Your page.
 
 All the texts and email templates may be configured in `settings` and overidden by field's keyword arguments.
 (See [settings.py](verified_email_field/settings.py) and [fieldsetup.py](verified_email_field/fieldsetup.py) for more information)
@@ -48,4 +49,5 @@ class User(models.Model):
     email = VerifiedEmailField('e-mail', fieldsetup_id='user-email')
 ```
 
-Ensure that `form.media.js` (`{{ form.media.js }}`) is being rendered in your template.
+Ensure that `form.media.js` (`{{ form.media.js }}`) is being rendered in your template
+and [jQuery](https://code.jquery.com/) is included in Your page.
