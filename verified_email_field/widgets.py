@@ -1,5 +1,3 @@
-from __future__ import unicode_literals
-
 from django import forms
 from django.forms.widgets import EmailInput, MultiWidget, TextInput
 from django.templatetags.static import static
