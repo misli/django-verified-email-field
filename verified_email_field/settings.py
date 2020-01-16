@@ -10,3 +10,4 @@ MAIL_TEMPLATE_TXT = getattr(settings, 'VERIFIED_EMAIL_MAIL_TEMPLATE_TXT', 'verif
 MAIL_TEMPLATE_HTML = getattr(settings, 'VERIFIED_EMAIL_MAIL_TEMPLATE_TXT', 'verified_email_field/mail.html')
 MAIL_MAILER = getattr(settings, 'VERIFIED_EMAIL_MAIL_MAILER',
                       'Django Verified Email Field (https://github.com/misli/django-verified-email-field)')
+CREATE_USER = getattr(settings, 'VERIFIED_EMAIL_CREATE_USER', True)

@@ -1,8 +1,11 @@
 from django import forms
 from django.contrib.auth import authenticate, get_user_model
 from django.contrib.auth.backends import ModelBackend
+from django.db import transaction
+from django.utils.crypto import get_random_string
 from django.utils.translation import ugettext_lazy as _
 
+from . import settings
 from .forms import VerifiedEmailField
 
 __all__ = ['EmailAuthenticationForm', 'VerifiedEmailBackend']
@@ -54,10 +57,21 @@ class VerifiedEmailBackend(ModelBackend):
     def authenticate(self, verified_email=None, **kwargs):
         if verified_email:
             UserModel = get_user_model()
-            try:
-                return (
-                    UserModel.objects.filter(email=verified_email, is_active=True).last() or
-                    UserModel.objects.create_user(username=verified_email, email=verified_email)
-                )
-            except Exception:
-                pass
+            user = UserModel.objects.filter(email=verified_email, is_active=True).last()
+            if user:
+                return user
+            if settings.CREATE_USER:
+                chars = 'abcdefghijklmnopqrstuvwxyz0123456789'
+                prefix = verified_email.split('@')[0]
+                for suffix in [
+                    '',
+                    '_' + get_random_string(3, chars),
+                    '_' + get_random_string(5, chars),
+                    '_' + get_random_string(10, chars),
+                ]:
+                    username = prefix + suffix
+                    try:
+                        with transaction.atomic():
+                            return UserModel.objects.create_user(username=username, email=verified_email)
+                    except Exception:
+                        pass
