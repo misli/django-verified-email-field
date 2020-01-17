@@ -5,7 +5,7 @@ from setuptools import setup, find_packages
 
 setup(
     name            = 'django-verified-email-field',
-    version         = '1.6.0',
+    version         = '1.6.1',
     description     = 'Simple model and form field to get verified email',
     author          = 'Jakub Dorňák',
     author_email    = 'jakub.dornak@misli.cz',
