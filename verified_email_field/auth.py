@@ -54,15 +54,15 @@ class VerifiedEmailBackend(ModelBackend):
     Fails to create new user if there already is user with given email as username.
     """
 
-    def authenticate(self, verified_email=None, **kwargs):
-        if verified_email:
+    def authenticate(self, **kwargs):
+        if 'verified_email' in kwargs:
             UserModel = get_user_model()
-            user = UserModel.objects.filter(email=verified_email, is_active=True).last()
+            user = UserModel.objects.filter(email=kwargs['verified_email'], is_active=True).last()
             if user:
                 return user
             if settings.CREATE_USER:
                 chars = 'abcdefghijklmnopqrstuvwxyz0123456789'
-                prefix = verified_email.split('@')[0]
+                prefix = kwargs['verified_email'].split('@')[0]
                 for suffix in [
                     '',
                     '_' + get_random_string(3, chars),
@@ -72,6 +72,6 @@ class VerifiedEmailBackend(ModelBackend):
                     username = prefix + suffix
                     try:
                         with transaction.atomic():
-                            return UserModel.objects.create_user(username=username, email=verified_email)
+                            return UserModel.objects.create_user(username=username, email=kwargs['verified_email'])
                     except Exception:
                         pass
