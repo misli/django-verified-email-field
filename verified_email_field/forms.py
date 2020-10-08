@@ -1,7 +1,7 @@
 from django import forms
 from django.core.exceptions import ValidationError
-from django.urls import reverse_lazy
 from django.forms.fields import CharField, EmailField, MultiValueField
+from django.urls import reverse_lazy
 from django.utils.translation import ugettext_lazy as _
 
 from .fieldsetup import VerifiedEmailFieldSetup, fieldsetups
