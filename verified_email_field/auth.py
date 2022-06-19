@@ -15,7 +15,7 @@ class EmailAuthenticationForm(forms.Form):
     """
     Form for authenticating users by verified email.
     """
-    email = VerifiedEmailField(_('E-mail'))
+    email = VerifiedEmailField(_('E-mail'), fieldsetup_id="verified_email_field.EmailAuthenticationForm")
 
     error_messages = {
         'error': _('''User with given e-mail couldn't neither be found nor created.'''),
