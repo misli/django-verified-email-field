@@ -6,7 +6,7 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: 1.8.0\n"
+"Project-Id-Version: 1.8.1\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-09-07 23:40+0200\n"
 "Last-Translator: Jakub Dorňák <jakub.dornak@misli.cz>\n"
