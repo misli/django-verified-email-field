@@ -1,6 +1,4 @@
-from django.http import (
-    HttpResponse, HttpResponseBadRequest, HttpResponseNotFound,
-)
+from django.http import HttpResponse, HttpResponseBadRequest, HttpResponseNotFound
 from django.views.decorators.http import require_POST
 
 from .fieldsetup import fieldsetups
@@ -17,5 +15,5 @@ def send(request, fieldsetup_id):
     form = SendForm(data=request.POST)
     if not form.is_valid():
         return HttpResponseBadRequest()
-    send_code(form.cleaned_data['email'], fieldsetup)
+    send_code(form.cleaned_data["email"], fieldsetup)
     return HttpResponse()

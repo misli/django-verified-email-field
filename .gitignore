@@ -6,3 +6,4 @@ dist
 *.swp
 .coverage
 .tox
+Pipfile.lock

@@ -4,7 +4,7 @@ from django.templatetags.static import static
 
 
 class VerifiedEmailWidget(MultiWidget):
-    template_name = 'verified_email_field/field.html'
+    template_name = "verified_email_field/field.html"
 
     def __init__(self, attrs=None, email_attrs=None, code_attrs=None, **context):
         self.context = context
@@ -13,7 +13,7 @@ class VerifiedEmailWidget(MultiWidget):
 
     @property
     def media(self):
-        return forms.Media(js=[static('verified_email_field/send.js')])
+        return forms.Media(js=[static("verified_email_field/send.js")])
 
     def decompress(self, value):
         if value:

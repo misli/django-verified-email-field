@@ -5,12 +5,11 @@ from .fieldsetup import VerifiedEmailFieldSetup
 
 
 class VerifiedEmailField(models.EmailField):
-
     def __init__(self, *args, **kwargs):
         self.formfield_kwargs = {
-            'form_class': forms.VerifiedEmailField,
+            "form_class": forms.VerifiedEmailField,
         }
-        for field in VerifiedEmailFieldSetup._fields + ('fieldsetup_id',):
+        for field in VerifiedEmailFieldSetup._fields + ("fieldsetup_id",):
             if field in kwargs:
                 self.formfield_kwargs[field] = kwargs.pop(field)
         super(VerifiedEmailField, self).__init__(*args, **kwargs)
