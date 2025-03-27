@@ -6,7 +6,7 @@ with open(os.path.join(os.path.dirname(__file__), "README.rst")) as readme:
 
 setup(
     name="django-verified-email-field",
-    version="1.10.0",
+    version="1.10.1",
     description="Simple model and form field to get verified email",
     long_description=long_description,
     author="Jakub Dorňák",
